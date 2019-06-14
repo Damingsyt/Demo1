@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DemoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="INSTRUMENT">
+          <Key>
+            <PropertyRef Name="InstrumentId" />
+          </Key>
+          <Property Name="InstrumentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InstrumentName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Symbol" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Broker" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Provider" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Market" Type="nvarchar(max)" />
+          <Property Name="Exchange" Type="nvarchar(max)" />
+          <Property Name="Type" Type="nvarchar(max)" />
+          <Property Name="Currency" Type="nvarchar(max)" />
+          <Property Name="Board" Type="nvarchar(max)" />
+          <Property Name="Room" Type="nvarchar(max)" />
+          <Property Name="ExpiryDate" Type="nvarchar(max)" />
+          <Property Name="Strike" Type="float" />
+          <Property Name="Underlying" Type="nvarchar(max)" />
+          <Property Name="CallPut" Type="nvarchar" MaxLength="50" />
+          <Property Name="TickTable" Type="nvarchar(max)" />
+          <Property Name="LotSize" Type="float" />
+          <Property Name="Commission" Type="float" />
+          <Property Name="CreditCheckType" Type="nvarchar(max)" />
+          <Property Name="Multiplier" Type="int" />
+          <Property Name="DiscountRate" Type="float" />
+        </EntityType>
+        <EntityType Name="RISK_FACTOR">
+          <Key>
+            <PropertyRef Name="InstrumentId" />
+            <PropertyRef Name="ProfileId" />
+            <PropertyRef Name="VolDate" />
+            <PropertyRef Name="Key" />
+          </Key>
+          <Property Name="InstrumentId" Type="int" Nullable="false" />
+          <Property Name="ProfileId" Type="int" Nullable="false" />
+          <Property Name="Value" Type="float" Nullable="false" />
+          <Property Name="VolDate" Type="date" Nullable="false" />
+          <Property Name="Key" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="DemoModelStoreContainer">
+          <EntitySet Name="INSTRUMENT" EntityType="Self.INSTRUMENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RISK_FACTOR" EntityType="Self.RISK_FACTOR" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DemoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="INSTRUMENT">
+          <Key>
+            <PropertyRef Name="InstrumentId" />
+          </Key>
+          <Property Name="InstrumentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InstrumentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Symbol" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Broker" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Provider" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Market" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Exchange" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Currency" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Board" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Room" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ExpiryDate" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Strike" Type="Double" />
+          <Property Name="Underlying" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CallPut" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TickTable" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LotSize" Type="Double" />
+          <Property Name="Commission" Type="Double" />
+          <Property Name="CreditCheckType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Multiplier" Type="Int32" />
+          <Property Name="DiscountRate" Type="Double" />
+        </EntityType>
+        <EntityType Name="RISK_FACTOR">
+          <Key>
+            <PropertyRef Name="InstrumentId" />
+            <PropertyRef Name="ProfileId" />
+            <PropertyRef Name="VolDate" />
+            <PropertyRef Name="Key" />
+          </Key>
+          <Property Name="InstrumentId" Type="Int32" Nullable="false" />
+          <Property Name="ProfileId" Type="Int32" Nullable="false" />
+          <Property Name="Value" Type="Double" Nullable="false" />
+          <Property Name="VolDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Key" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="DemoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="INSTRUMENT" EntityType="Self.INSTRUMENT" />
+          <EntitySet Name="RISK_FACTOR" EntityType="Self.RISK_FACTOR" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DemoModelStoreContainer" CdmEntityContainer="DemoEntities">
+          <EntitySetMapping Name="INSTRUMENT">
+            <EntityTypeMapping TypeName="DemoModel.INSTRUMENT">
+              <MappingFragment StoreEntitySet="INSTRUMENT">
+                <ScalarProperty Name="InstrumentId" ColumnName="InstrumentId" />
+                <ScalarProperty Name="InstrumentName" ColumnName="InstrumentName" />
+                <ScalarProperty Name="Symbol" ColumnName="Symbol" />
+                <ScalarProperty Name="Broker" ColumnName="Broker" />
+                <ScalarProperty Name="Provider" ColumnName="Provider" />
+                <ScalarProperty Name="Market" ColumnName="Market" />
+                <ScalarProperty Name="Exchange" ColumnName="Exchange" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="Board" ColumnName="Board" />
+                <ScalarProperty Name="Room" ColumnName="Room" />
+                <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+                <ScalarProperty Name="Strike" ColumnName="Strike" />
+                <ScalarProperty Name="Underlying" ColumnName="Underlying" />
+                <ScalarProperty Name="CallPut" ColumnName="CallPut" />
+                <ScalarProperty Name="TickTable" ColumnName="TickTable" />
+                <ScalarProperty Name="LotSize" ColumnName="LotSize" />
+                <ScalarProperty Name="Commission" ColumnName="Commission" />
+                <ScalarProperty Name="CreditCheckType" ColumnName="CreditCheckType" />
+                <ScalarProperty Name="Multiplier" ColumnName="Multiplier" />
+                <ScalarProperty Name="DiscountRate" ColumnName="DiscountRate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RISK_FACTOR">
+            <EntityTypeMapping TypeName="DemoModel.RISK_FACTOR">
+              <MappingFragment StoreEntitySet="RISK_FACTOR">
+                <ScalarProperty Name="InstrumentId" ColumnName="InstrumentId" />
+                <ScalarProperty Name="ProfileId" ColumnName="ProfileId" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="VolDate" ColumnName="VolDate" />
+                <ScalarProperty Name="Key" ColumnName="Key" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

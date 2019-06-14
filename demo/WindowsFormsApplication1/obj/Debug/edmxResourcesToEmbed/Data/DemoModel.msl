@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DemoModelStoreContainer" CdmEntityContainer="DemoEntities">
+    <EntitySetMapping Name="INSTRUMENT">
+      <EntityTypeMapping TypeName="DemoModel.INSTRUMENT">
+        <MappingFragment StoreEntitySet="INSTRUMENT">
+          <ScalarProperty Name="InstrumentId" ColumnName="InstrumentId" />
+          <ScalarProperty Name="InstrumentName" ColumnName="InstrumentName" />
+          <ScalarProperty Name="Symbol" ColumnName="Symbol" />
+          <ScalarProperty Name="Broker" ColumnName="Broker" />
+          <ScalarProperty Name="Provider" ColumnName="Provider" />
+          <ScalarProperty Name="Market" ColumnName="Market" />
+          <ScalarProperty Name="Exchange" ColumnName="Exchange" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Currency" ColumnName="Currency" />
+          <ScalarProperty Name="Board" ColumnName="Board" />
+          <ScalarProperty Name="Room" ColumnName="Room" />
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+          <ScalarProperty Name="Strike" ColumnName="Strike" />
+          <ScalarProperty Name="Underlying" ColumnName="Underlying" />
+          <ScalarProperty Name="CallPut" ColumnName="CallPut" />
+          <ScalarProperty Name="TickTable" ColumnName="TickTable" />
+          <ScalarProperty Name="LotSize" ColumnName="LotSize" />
+          <ScalarProperty Name="Commission" ColumnName="Commission" />
+          <ScalarProperty Name="CreditCheckType" ColumnName="CreditCheckType" />
+          <ScalarProperty Name="Multiplier" ColumnName="Multiplier" />
+          <ScalarProperty Name="DiscountRate" ColumnName="DiscountRate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RISK_FACTOR">
+      <EntityTypeMapping TypeName="DemoModel.RISK_FACTOR">
+        <MappingFragment StoreEntitySet="RISK_FACTOR">
+          <ScalarProperty Name="InstrumentId" ColumnName="InstrumentId" />
+          <ScalarProperty Name="ProfileId" ColumnName="ProfileId" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="VolDate" ColumnName="VolDate" />
+          <ScalarProperty Name="Key" ColumnName="Key" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

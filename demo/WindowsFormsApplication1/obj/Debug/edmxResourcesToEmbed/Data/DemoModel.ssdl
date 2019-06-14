@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DemoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="INSTRUMENT">
+    <Key>
+      <PropertyRef Name="InstrumentId" />
+    </Key>
+    <Property Name="InstrumentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InstrumentName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Symbol" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Broker" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Provider" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Market" Type="nvarchar(max)" />
+    <Property Name="Exchange" Type="nvarchar(max)" />
+    <Property Name="Type" Type="nvarchar(max)" />
+    <Property Name="Currency" Type="nvarchar(max)" />
+    <Property Name="Board" Type="nvarchar(max)" />
+    <Property Name="Room" Type="nvarchar(max)" />
+    <Property Name="ExpiryDate" Type="nvarchar(max)" />
+    <Property Name="Strike" Type="float" />
+    <Property Name="Underlying" Type="nvarchar(max)" />
+    <Property Name="CallPut" Type="nvarchar" MaxLength="50" />
+    <Property Name="TickTable" Type="nvarchar(max)" />
+    <Property Name="LotSize" Type="float" />
+    <Property Name="Commission" Type="float" />
+    <Property Name="CreditCheckType" Type="nvarchar(max)" />
+    <Property Name="Multiplier" Type="int" />
+    <Property Name="DiscountRate" Type="float" />
+  </EntityType>
+  <EntityType Name="RISK_FACTOR">
+    <Key>
+      <PropertyRef Name="InstrumentId" />
+      <PropertyRef Name="ProfileId" />
+      <PropertyRef Name="VolDate" />
+      <PropertyRef Name="Key" />
+    </Key>
+    <Property Name="InstrumentId" Type="int" Nullable="false" />
+    <Property Name="ProfileId" Type="int" Nullable="false" />
+    <Property Name="Value" Type="float" Nullable="false" />
+    <Property Name="VolDate" Type="date" Nullable="false" />
+    <Property Name="Key" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="DemoModelStoreContainer">
+    <EntitySet Name="INSTRUMENT" EntityType="Self.INSTRUMENT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RISK_FACTOR" EntityType="Self.RISK_FACTOR" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
